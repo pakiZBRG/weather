@@ -15,7 +15,7 @@ function Layout() {
             .catch(err => setError(err))
     }, [URL]);
 
-    // console.log(error, forecast, loading)
+    // console.log(error, forecast)
 
     return (
         <>
@@ -26,6 +26,7 @@ function Layout() {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
                 <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+                <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"/> 
             </Head>
 
             <div className='flex text-white'>
