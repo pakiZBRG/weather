@@ -15,8 +15,6 @@ function Layout() {
             .catch(err => setError(err))
     }, [URL]);
 
-    // console.log(error, forecast)
-
     return (
         <>
             <Head>
@@ -29,7 +27,7 @@ function Layout() {
                 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"/> 
             </Head>
 
-            <div className='flex text-white'>
+            <div className='flex text-white h-screen'>
                 <CurrentWeather data={forecast}/>
                 <FiveDayWeather data={forecast}/>
             </div>
