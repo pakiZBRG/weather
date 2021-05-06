@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 import CurrentWeather from './CurrentWeather';
 import FiveDayWeather from './FiveDayWeather';
-import data from '../fetch';
 
 function Layout() {
+    const URL = `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/44418/`;
+    const [forecast, setForecast] = useState([]);
+    const [error, setError] = useState([])
+    
+    useEffect(() => {
+        fetch(URL)
+            .then(res => res.json())
+            .then(data => setForecast(data))
+            .catch(err => setError(err))
+    }, [URL]);
+
+    console.log(error, forecast)
+
     return (
         <>
             <Head>
@@ -17,8 +29,8 @@ function Layout() {
             </Head>
 
             <div className='flex text-white'>
-                <CurrentWeather forecast={data}/>
-                <FiveDayWeather forecast={data}/>
+                <CurrentWeather/>
+                <FiveDayWeather/>
             </div>
         </>
     )
