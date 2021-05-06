@@ -29,8 +29,8 @@ function Layout() {
             </Head>
 
             <div className='flex text-white'>
-                <CurrentWeather/>
-                <FiveDayWeather/>
+                <CurrentWeather data={forecast}/>
+                <FiveDayWeather data={forecast}/>
             </div>
         </>
     )
