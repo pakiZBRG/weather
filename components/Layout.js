@@ -6,7 +6,7 @@ import FiveDayWeather from './FiveDayWeather';
 function Layout() {
     const URL = `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/44418/`;
     const [forecast, setForecast] = useState([]);
-    const [error, setError] = useState([])
+    const [error, setError] = useState([]);
     
     useEffect(() => {
         fetch(URL)
@@ -15,7 +15,7 @@ function Layout() {
             .catch(err => setError(err))
     }, [URL]);
 
-    console.log(error, forecast)
+    // console.log(error, forecast, loading)
 
     return (
         <>
