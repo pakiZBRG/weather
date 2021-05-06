@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import CurrentWeather from './CurrentWeather';
 import FiveDayWeather from './FiveDayWeather';
+import data from '../fetch';
 
 function Layout() {
     return (
@@ -16,8 +17,8 @@ function Layout() {
             </Head>
 
             <div className='flex text-white'>
-                <CurrentWeather/>
-                <FiveDayWeather/>
+                <CurrentWeather forecast={data}/>
+                <FiveDayWeather forecast={data}/>
             </div>
         </>
     )

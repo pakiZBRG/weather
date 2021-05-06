@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FiveDayWeather() {
+function FiveDayWeather({forecast}) {
     return (
         <div className='w-8/12 p-8 bg-indigo-900'>
             5 Day
