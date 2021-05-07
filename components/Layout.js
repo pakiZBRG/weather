@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
-import CurrentWeather from './CurrentWeather';
-import FiveDayWeather from './FiveDayWeather';
+import CurrentForecast from './CurrentForecast';
 
 function Layout() {
     const URL = `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/44418/`;
@@ -27,9 +26,8 @@ function Layout() {
                 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"/> 
             </Head>
 
-            <div className='flex text-white h-screen'>
-                <CurrentWeather data={forecast}/>
-                <FiveDayWeather data={forecast}/>
+            <div className='lg:flex block text-white h-auto'>
+                <CurrentForecast data={forecast}/>
             </div>
         </>
     )
