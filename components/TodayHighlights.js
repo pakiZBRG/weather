@@ -2,9 +2,9 @@ import React from 'react'
 
 function TodayHighlights({weather}) {
     return (
-        <>
+        <div className='px-8'>
             <h1 className='text-2xl font-bold pb-16'>Today's Highlights</h1>
-            <div className='flex flex-wrap md:justify-center'>
+            <div className='flex flex-wrap justify-center'>
                 <div className='flex flex-col text-center bg-gray-700 px-10 text-2xl w-96 m-3 h-48'>
                     <p className='py-4 text-base'>Wind Status</p>
                     <p>
@@ -39,11 +39,11 @@ function TodayHighlights({weather}) {
                 <div className='flex flex-col text-center bg-gray-700 px-10 text-2xl w-96 m-3 h-36'>
                     <p className='py-4 text-base'>Air pressure</p>
                     <p className='pb-5'>
-                        <span className='font-black text-6xl'>{ weather[0].air_pressure }</span>mbar
+                        <span className='font-black text-6xl'>{ weather[0].air_pressure.toFixed(0) }</span>mbar
                     </p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

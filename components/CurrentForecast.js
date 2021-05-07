@@ -40,7 +40,7 @@ function CurrentWeather({data}) {
                         className='text-black p-2 mb-20 rounded bg-gray-600 text-white'
                     />
                     <Image src={`/icons/${weather[0].weather_state_abbr}.svg`} width={150} height={150} alt={weather[0].weather_state_name}/>
-                    <p className='my-20'>
+                    <p className='lg:my-20 my-6'>
                         <span className='font-bold text-7xl'>{weather[0].the_temp.toFixed(0)}</span> 
                         <span className='text-2xl text-gray-400'> °C</span>
                     </p>

@@ -8,7 +8,7 @@ function FiveDayForecastt({data}) {
     return (
         <>
             {weather &&
-                <div className='flex flex-col lg:w-8/12 w-full p-16 px-32 bg-gray-900'>
+                <div className='flex flex-col lg:w-8/12 w-full p-16 px-0 md:px-32 bg-gray-900'>
                     <FiveDayWeather weather={weather}/>
                     <TodayHighlights weather={weather}/>
                 </div>
