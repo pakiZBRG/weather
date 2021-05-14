@@ -4,11 +4,12 @@ import moment from 'moment';
 import Head from 'next/head';
 
 function Layout() {
-    const [city, setCity] = useState('Paris');
+    const [city, setCity] = useState('London');
     const [forecast, setForecast] = useState([]);
     const [error, setError] = useState([]);
     const [woeid, setWOEID] = useState('');
     const [open, setOpen] = useState(false);
+    const [farenheit, setFarenheit] = useState(false);
 
     const URL = 'https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/';
     
@@ -17,7 +18,7 @@ function Layout() {
             .then(res => res.json())
             .then(data => setWOEID(data[0].woeid))
             .catch(err => setError(err))
-        
+    
         fetch(URL + `${woeid}`)
             .then(res => res.json())
             .then(data => setForecast(data))
@@ -30,6 +31,9 @@ function Layout() {
     const toggleSidebar = () => {
         setOpen(!open);
     }
+
+    const Farenheit = () => setFarenheit(true)
+    const Celsius = () => setFarenheit(false)
 
     const {title, time} = forecast;
     const weather = forecast && forecast.consolidated_weather;
@@ -65,6 +69,7 @@ function Layout() {
                     <p className='pt-20 pb-4 text-gray-400'>Today <span className='px-3'>•</span> {moment(time).format("ddd, D MMM")}</p>
                     <p className='text-gray-100 text-lg pb-10'><i className="fa fa-map-marker pr-2"></i> {title}</p>
                 </div>
+
                 {open && <div className='absolute flex flex-col items-center lg:w-4/12 w-full pt-16 bg-gray-800 h-full'>
                     <div className='w-9/12 flex justify-between'>
                         <input 
@@ -76,15 +81,21 @@ function Layout() {
                         <span className='cursor-pointer text-4xl' onClick={toggleSidebar}>&times;</span>
                     </div>
                 </div>}
+
                 <div className='flex flex-col lg:w-8/12 w-full p-16 px-0 md:px-32 bg-gray-900'>
+
+                <div className='flex'>
+                    <span className={`${farenheit ? 'bg-gray-800' : 'bg-gray-500' } cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Celsius}>°C</span>
+                    <span className={`${farenheit ? 'bg-gray-500' : 'bg-gray-800' } cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Farenheit}>F</span>
+                </div>   
                     <div className='mb-16 flex flex-wrap justify-around'>
                         {weather.map((w, i) => (
                             <div key={i} className='m-3 flex flex-col w-36 items-center bg-gray-700'>
                                 <h1 className='py-4 text-gray-200'>{moment(w.applicable_date).format("ddd, D MMM")}</h1>
                                 <Image className='my-10' src={`/icons/${w.weather_state_abbr}.svg`} width={70} height={60}/>
                                 <div className='flex justify-between w-24 py-4'>
-                                    <p className='text-lg font-bold'>{w.max_temp.toFixed(0)}°C</p>
-                                    <p className='text-lg text-gray-500 font-bold'>{w.min_temp.toFixed(0)}°C</p>
+                                    <p className='text-lg font-bold'>{farenheit ? (w.max_temp * 1.8 + 32).toFixed(0) : (w.max_temp -32 * 0.5556).toFixed(0)}{farenheit ? 'F' : '°C'}</p>
+                                    <p className='text-lg text-gray-500 font-bold'>{farenheit ? (w.min_temp * 1.8 + 32).toFixed(0) : (w.min_temp -32 * 0.5556).toFixed(0)}{farenheit ? 'F' : '°C'}</p>
                                 </div>
                             </div>
                         ))}
