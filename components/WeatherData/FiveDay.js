@@ -13,8 +13,8 @@ function FiveDay({forecast}) {
     return (
         <>
             <div className='flex pb-5'>
-                <span className={`${farenheit ? 'bg-gray-800' : 'bg-gray-500' } cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Celsius}>°C</span>
-                <span className={`${farenheit ? 'bg-gray-500' : 'bg-gray-800' } cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Farenheit}>F</span>
+                <span className={`${farenheit ? 'bg-gray-800' : 'bg-gray-500'} cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Celsius}>°C</span>
+                <span className={`${farenheit ? 'bg-gray-500' : 'bg-gray-800'} cursor-pointer  w-8 py-1 rounded-full text-center m-1`} onClick={Farenheit}>F</span>
             </div>   
             <div className='mb-16 flex flex-wrap justify-around'>
                 {weather.map((w, i) => (
